@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="c_stock_view_tree" model="ir.ui.view">
+        <field name="name">c.stock.view.tree</field>
+        <field name="model">c.stock</field>
+        <field name="arch" type="xml">
+            <tree string="Custom Stock">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="location_id"/>
+                <field name="scrap_location_id"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="c_stock_view_form" model="ir.ui.view">
+        <field name="name">c.stock.view.form</field>
+        <field name="model">c.stock</field>
+        <field name="arch" type="xml">
+            <form string="Custom Stock Form">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="location_id"/>
+                <field name="scrap_location_id"/>
+                <field name="description"/>
+
+                <group>
+                    <button name="action_scrap" type="object" string="Scrap" class="btn-primary"/>
+                    <button name="action_validate" type="object" string="Validate" class="btn-primary"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-primary"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_c_stock">
+        <field name="name">Custom Stock</field>
+        <field name="res_model">c.stock</field>
+        <field name="view_mode">tree,form,kanban,pivot,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                C Stock is a custom stock management system.
+            </p>
+            <p>
+                C Stock a product will remove it from your stock. The product will
+                end up in a scrap location that can be used for reporting purpose.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="My Stocks" id="c_menu_stock_root" sequence="140" web_icon="c_stock,static/description/icon.png"/>
+    <menuitem id="menu_c_stock_group" name="Operations" parent="c_menu_stock_root" sequence="2"/>
+    <menuitem id="menu_c_stock" name="My C Stock" parent="menu_c_stock_group" sequence="1"/>
+
+
+</odoo>
+
+ 
